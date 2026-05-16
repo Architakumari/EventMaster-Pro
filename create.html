@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event - EventMaster Pro</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    radial-gradient(circle at top left,#7c3aed 0%,transparent 30%),
+    radial-gradient(circle at bottom right,#ff4d6d 0%,transparent 30%),
+    #0f172a;
+
+    min-height:100vh;
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+/* GLOW EFFECT */
+
+.bg-blur{
+    position:fixed;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:0.25;
+
+    z-index:-1;
+}
+
+.blur1{
+    background:#7c3aed;
+
+    top:-100px;
+    left:-100px;
+}
+
+.blur2{
+    background:#ff4d6d;
+
+    bottom:-100px;
+    right:-100px;
+}
+
+/* NAVBAR */
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:22px 50px;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(14px);
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.08);
+}
+
+.navbar-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:1.4rem;
+
+    font-weight:700;
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:30px;
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#cbd5e1;
+
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+/* MAIN */
+
+.main-content{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:60px 20px;
+}
+
+/* FORM CONTAINER */
+
+.container{
+
+    width:100%;
+
+    max-width:650px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,0.3);
+}
+
+/* TITLE */
+
+h1{
+
+    font-size:2.3rem;
+
+    margin-bottom:30px;
+
+    text-align:center;
+
+    background:
+    linear-gradient(90deg,#c084fc,#ff758f);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+/* FORM */
+
+.form-group{
+    margin-bottom:22px;
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#e2e8f0;
+
+    font-size:0.95rem;
+}
+
+input,
+textarea{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:16px;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:1rem;
+
+    transition:0.3s ease;
+}
+
+input:focus,
+textarea:focus{
+
+    transform:scale(1.02);
+
+    box-shadow:
+    0 0 15px rgba(124,58,237,0.4);
+
+    border:1px solid #7c3aed;
+}
+
+textarea{
+    resize:none;
+
+    min-height:120px;
+}
+
+/* ROW */
+
+.row{
+
+    display:flex;
+
+    gap:20px;
+}
+
+.row .form-group{
+    flex:1;
+}
+
+/* BUTTONS */
+
+.actions{
+
+    display:flex;
+
+    gap:16px;
+
+    margin-top:30px;
+}
+
+button{
+
+    flex:1;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+}
+
+.btn-submit{
+
+    background:
+    linear-gradient(90deg,#7c3aed,#ff4d6d);
+
+    color:white;
+
+    box-shadow:
+    0 10px 25px rgba(124,58,237,0.35);
+}
+
+.btn-submit:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 15px 35px rgba(255,77,109,0.4);
+}
+
+.btn-cancel{
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    border:
+    1px solid rgba(255,255,255,0.1);
+}
+
+.btn-cancel:hover{
+
+    background:rgba(255,255,255,0.12);
+
+    transform:translateY(-3px);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .navbar{
+        padding:20px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .container{
+        padding:30px 20px;
+    }
+
+    .row{
+        flex-direction:column;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <i data-lucide="layers"></i> EventMaster Pro
+        </div>
+        <div class="nav-links">
+            <a href="/booking">Dashboard</a>
+            <a href="/">Home Page</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container">
+            <h1>Create New Event</h1>
+            
+            <div class="form-group">
+                <label for="name">Event Name</label>
+                <input id="name" type="text" placeholder="">
+            </div>
+            
+            <div class="row">
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input id="date" type="date">
+                </div>
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input id="time" type="time">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="venue">Venue</label>
+                <input id="venue" type="text" placeholder="Location">
+            </div>
+
+            <div class="form-group">
+                <label for="desc">Description</label>
+                <textarea id="desc" placeholder="Details about the event..."></textarea>
+            </div>
+
+            <div class="actions">
+                <button class="btn-cancel" onclick="window.location.href='/booking'">Cancel</button>
+                <button class="btn-submit" onclick="addEvent()">Save Event</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        async function addEvent() {
+            let name = document.getElementById("name").value;
+            let date = document.getElementById("date").value;
+            let time = document.getElementById("time").value;
+            let venue = document.getElementById("venue").value;
+            let description = document.getElementById("desc").value;
+
+            if (!name || !date || !time || !venue || !description) {
+                alert("Please fill all fields.");
+                return;
+            }
+
+            let res = await fetch('/events', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ name, date, time, venue, description })
+            });
+
+            if (res.ok) {
+                window.location.href = '/booking';
+            } else {
+                let data = await res.json();
+                alert(data.error || "Failed to create event.");
+            }
+        }
+    </script>
+</body>
+</html>
